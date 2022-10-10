@@ -81,10 +81,10 @@ Write a function called dice; it should randomize an integer number between 1 an
 */
 
 console.log("\nEXERCISE 1");
-function dice(a) {
+function dice() {
   return Math.floor(Math.random() * 7);
 }
-let randomInteger = dice(3);
+let randomInteger = dice();
 console.log("Random integer: ", randomInteger);
 
 /* EXERCISE 2
@@ -203,16 +203,17 @@ values: [3, 3, 4]
 */
 console.log("\nEXERCISE 8");
 
-let values = [];
-let summ = 0;
 function rollTheDices(a) {
+  let rollDices = {
+    values: [],
+    summ: 0,
+  };
+
   for (let i = 0; i < a; i++) {
-    return dice(a);
+    const rolledDices = dice();
+    rollDices.summ = rollDices.summ + rolledDices;
+    rollDices.values.push(rolledDices);
   }
+  return rollDices;
 }
-let x = rollTheDices(3);
-console.log(x);
-// console.log("Values: ", values);
-// console.log("Sum: ", summ);
-// let ourObject = rollTheDices(3);
-// console.log(ourObject);
+console.log(rollTheDices(3));
